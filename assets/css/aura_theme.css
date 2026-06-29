@@ -1,0 +1,979 @@
+/* =============================================
+   AURA AI — Space Theme v2.0
+   Pixel-matched to design reference
+   ============================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Inter:wght@300;400;500;600&display=swap');
+
+/* ── CSS Variables ─────────────────────────────────── */
+:root {
+  --aura-bg-deep:       #06071A;
+  --aura-bg-surface:    #0D0F2B;
+  --aura-bg-card:       #111436;
+  --aura-bg-sidebar:    #080A20;
+  --aura-accent-gold:   #F0A500;
+  --aura-accent-gold2:  #FFD166;
+  --aura-accent-blue:   #4A90E2;
+  --aura-accent-purple: #7B6FF0;
+  --aura-text-primary:  #E8ECF8;
+  --aura-text-muted:    #7A82A8;
+  --aura-text-hint:     #4A5180;
+  --aura-border:        rgba(255,255,255,0.07);
+  --aura-border-gold:   rgba(240,165,0,0.35);
+  --aura-glow-gold:     rgba(240,165,0,0.15);
+  --aura-glow-blue:     rgba(74,144,226,0.15);
+  --aura-bubble-user:   #1A1D45;
+  --aura-bubble-ai:     #111436;
+  --font-display:       'Orbitron', sans-serif;
+  --font-body:          'Inter', sans-serif;
+  --radius-sm:   8px;
+  --radius-md:   12px;
+  --radius-lg:   18px;
+  --radius-xl:   24px;
+}
+
+/* ── Global Reset ───────────────────────────────────── */
+.stApp{
+
+    background:
+
+    radial-gradient(
+        circle at 15% 15%,
+        rgba(59,130,246,0.16),
+        transparent 28%
+    ),
+
+    radial-gradient(
+        circle at 85% 20%,
+        rgba(139,92,246,0.14),
+        transparent 32%
+    ),
+
+    radial-gradient(
+        circle at 50% 85%,
+        rgba(251,191,36,0.06),
+        transparent 42%
+    ),
+
+    linear-gradient(
+        180deg,
+        #020617 0%,
+        #08101F 45%,
+        #0B1120 100%
+    );
+
+    color:#F8FAFC;
+}
+.stApp::before{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    background-image:
+
+        radial-gradient(
+            rgba(255,255,255,0.90) 1px,
+            transparent 1px
+        ),
+
+        radial-gradient(
+            rgba(251,191,36,0.75) 1px,
+            transparent 1px
+        ),
+
+        radial-gradient(
+            rgba(59,130,246,0.55) 1px,
+            transparent 1px
+        );
+
+    background-size:
+
+        140px 140px,
+
+        260px 260px,
+
+        420px 420px;
+
+    opacity:0.28;
+
+    pointer-events:none;
+
+    z-index:-1;
+    animation:
+    starTwinkle 8s ease-in-out infinite alternate;
+    @keyframes starTwinkle{
+
+    from{
+
+        opacity:.18;
+
+    }
+
+    to{
+
+        opacity:.32;
+
+    }
+
+}
+}
+/* =====================================
+   DEEP SPACE GLOW
+===================================== */
+
+.stApp::after{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    z-index:-2;
+
+    background:
+
+    radial-gradient(
+        circle at 15% 20%,
+        rgba(59,130,246,0.08),
+        transparent 25%
+    ),
+
+    radial-gradient(
+        circle at 80% 30%,
+        rgba(147,51,234,0.06),
+        transparent 28%
+    ),
+
+    radial-gradient(
+        circle at 55% 80%,
+        rgba(255,215,0,0.03),
+        transparent 22%
+    );
+
+    animation:
+        nebulaFloat 45s ease-in-out infinite alternate;
+}
+.main .block-container {
+  background: transparent !important;
+  padding-top: 1.5rem !important;
+  max-width: 940px !important;
+}
+
+/* ── Hide Streamlit chrome ──────────────────────────── */
+#MainMenu    { visibility: hidden; }
+footer       { visibility: hidden; }
+header       { visibility: hidden; }
+[data-testid="stSidebarNav"] { display: none !important; }
+
+/* ── Sidebar base ───────────────────────────────────── */
+[data-testid="stSidebarNav"] {
+  position: relative;
+  z-index: 2;
+  display: none !important; }
+section[data-testid="stSidebar"]{
+
+    position: relative;
+    overflow: hidden;
+
+}
+
+section[data-testid="stSidebar"]::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:560px;
+    height:560px;
+
+    left:-360px;
+
+    top:180px;
+
+    border-radius:50%;
+
+background:
+
+radial-gradient(
+    circle at 18% 55%,
+    rgba(80,160,255,.28) 0%,
+    rgba(80,160,255,.12) 24%,
+    transparent 52%
+),
+
+radial-gradient(
+    circle at 30% 48%,
+    rgba(255,220,120,.30) 0%,
+    #5B7DDB 8%,
+    #355EC5 22%,
+    #1B347F 45%,
+    #0C173A 72%,
+    #020617 100%
+);
+filter:
+
+drop-shadow(
+0 0 20px rgba(74,144,226,.40)
+)
+
+drop-shadow(
+0 0 60px rgba(74,144,226,.20)
+);
+    opacity:0.68;
+    z-index:0;
+
+    pointer-events:none;
+
+box-shadow:
+
+0 0 25px rgba(255,215,120,0.45),
+
+0 0 70px rgba(74,144,226,0.35),
+
+0 0 140px rgba(74,144,226,0.18),
+
+inset 8px 0 20px rgba(255,220,140,0.18);
+
+}
+/* ── Sidebar base ───────────────────────────────────── */
+[data-testid="stSidebar"] {
+
+  background-color: var(--aura-bg-sidebar) !important;
+  border-right: 1px solid var(--aura-border) !important;
+  padding: 0 !important;
+  
+}
+[data-testid="stSidebar"] > div:first-child { padding: 0 !important; }
+[data-testid="stSidebar"] .block-container   { padding: 0 !important; }
+
+/* ── Sidebar Hero (Earth / Space) ───────────────────── */
+.aura-sidebar-hero {
+  position: relative;
+  width: 100%;
+  height:215px;
+  overflow: hidden;
+ background:
+    linear-gradient(
+    180deg,
+    rgba(8,10,32,0.95) 0%,
+    rgba(8,10,32,0.75) 60%,
+    rgba(8,10,32,0.25) 100%
+),
+    radial-gradient(
+    ellipse at -55% 55%,
+    rgba(74,144,226,0.22) 0%,
+    rgba(74,144,226,0.10) 30%,
+    transparent 70%
+);
+ flex-shrink: 0;
+}
+
+/* Star field */
+.aura-sidebar-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle 1.5px at 12% 18%, rgba(255,255,255,0.85), transparent),
+    radial-gradient(circle 1px   at 36%  7%, rgba(255,255,255,0.60), transparent),
+    radial-gradient(circle 2px   at 68% 22%, rgba(255,255,255,0.75), transparent),
+    radial-gradient(circle 1px   at 83% 14%, rgba(255,255,255,0.55), transparent),
+    radial-gradient(circle 1px   at 24% 40%, rgba(255,255,255,0.40), transparent),
+    radial-gradient(circle 1.5px at 78% 36%, rgba(255,255,255,0.65), transparent),
+    radial-gradient(circle 1px   at 92%  8%, rgba(255,255,255,0.50), transparent),
+    radial-gradient(circle 1px   at  7% 52%, rgba(255,255,255,0.30), transparent),
+    radial-gradient(circle 2px   at 54% 16%, rgba(180,210,255,0.55), transparent),
+    radial-gradient(circle 1px   at 44% 44%, rgba(255,255,255,0.35), transparent),
+    radial-gradient(circle 1px   at 96% 28%, rgba(255,255,255,0.45), transparent);
+  z-index: 0;
+}
+
+/* Earth planet */
+.aura-sidebar-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle 1.5px at 12% 18%, rgba(255,255,255,0.85), transparent),
+    radial-gradient(circle 1px   at 36%  7%, rgba(255,255,255,0.60), transparent),
+    radial-gradient(circle 2px   at 68% 22%, rgba(255,255,255,0.75), transparent),
+    radial-gradient(circle 1px   at 83% 14%, rgba(255,255,255,0.55), transparent),
+    radial-gradient(circle 1px   at 24% 40%, rgba(255,255,255,0.40), transparent),
+    radial-gradient(circle 1.5px at 78% 36%, rgba(255,255,255,0.65), transparent),
+    radial-gradient(circle 1px   at 92%  8%, rgba(255,255,255,0.50), transparent),
+    radial-gradient(circle 1px   at  7% 52%, rgba(255,255,255,0.30), transparent),
+    radial-gradient(circle 2px   at 54% 16%, rgba(180,210,255,0.55), transparent),
+    radial-gradient(circle 1px   at 44% 44%, rgba(255,255,255,0.35), transparent),
+    radial-gradient(circle 1px   at 96% 28%, rgba(255,255,255,0.45), transparent);
+  z-index: 0;
+}
+
+/* Earth planet */
+.aura-earth-bg {
+  position: absolute;
+  bottom: -120px;
+  left: -125px;
+  transform: none;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  display:none;
+  background:
+radial-gradient(
+    circle at 32% 30%,
+
+    #5878D8 0%,
+
+    #2C4EA8 14%,
+
+    #182F73 34%,
+
+    #0D1C48 55%,
+
+    #071228 74%,
+
+    #020617 100%
+);
+  box-shadow:
+    0 0 70px  rgba(74,144,226,0.55),
+    0 0 140px rgba(74,144,226,0.22),
+    inset -30px -30px 70px rgba(0,0,0,0.72);
+  z-index: 1;
+}
+/* Brand overlay on top of hero */
+.aura-brand-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 22px;
+}
+
+.aura-logo {
+  width: 54px;
+  height: 54px;
+  min-width: 54px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.10);
+  border: 1.5px solid rgba(255,255,255,0.22);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin-bottom: 8px;
+  box-shadow:
+    0 0 22px rgba(123,111,240,0.75),
+    0 0 44px rgba(74,144,226,0.35);
+  animation: aura-pulse 3s ease-in-out infinite;
+}
+
+@keyframes aura-pulse {
+  0%,100% { box-shadow: 0 0 22px rgba(123,111,240,0.75), 0 0 44px rgba(74,144,226,0.35); }
+  50%      { box-shadow: 0 0 32px rgba(123,111,240,0.95), 0 0 64px rgba(74,144,226,0.50); }
+}
+
+.aura-brand-name {
+  font-family: var(--font-display) !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: #E8ECF8 !important;
+  letter-spacing: 0.12em !important;
+  margin: 0 !important;
+  text-shadow: 0 0 18px rgba(255,255,255,0.28);
+}
+
+.aura-brand-tagline {
+  font-size: 10.5px !important;
+  color: var(--aura-accent-gold) !important;
+  text-align: center !important;
+  margin-top: 4px !important;
+  letter-spacing: 0.04em !important;
+  line-height: 1.4 !important;
+  padding: 0 14px;
+}
+
+/* ── Sidebar Nav buttons ────────────────────────────── */
+/* Override ALL sidebar stButton to look like nav items */
+[data-testid="stSidebar"] .stButton > button {
+  width: 100% !important;
+  text-align: left !important;
+  background: transparent !important;
+  border: none !important;
+  border-left: 3px solid transparent !important;
+  color: var(--aura-text-muted) !important;
+  font-family: var(--font-body) !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  padding: 0.62rem 1rem !important;
+  border-radius: 10px !important;
+  transition: all 0.2s ease !important;
+  cursor: pointer !important;
+  margin-bottom: 0 !important;
+  justify-content: flex-start !important;
+  letter-spacing: 0.01em !important;
+  box-shadow: none !important;
+}
+
+[data-testid="stSidebar"] .stButton > button:hover {
+  background: rgba(240,165,0,0.06) !important;
+  color: var(--aura-text-primary) !important;
+  border-left-color: rgba(240,165,0,0.30) !important;
+}
+
+[data-testid="stSidebar"] .stButton > button:focus {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+[data-testid="stSidebar"] .element-container { margin-bottom: 0 !important; }
+[data-testid="stSidebar"] .stButton          { margin-bottom: 0 !important; }
+
+/* ── Page Title ─────────────────────────────────────── */
+.aura-page-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 0.25rem;
+}
+
+.aura-page-title h1 {
+  font-family: var(--font-body) !important;
+  font-size: 28px !important;
+  font-weight: 600 !important;
+  color: var(--aura-text-primary) !important;
+  margin: 0 !important;
+  letter-spacing: 0.01em;
+}
+
+.aura-page-title h1 span { color: var(--aura-accent-gold) !important; }
+
+.aura-page-subtitle {
+  font-size: 13px !important;
+  color: var(--aura-text-muted) !important;
+  margin-bottom: 0.6rem !important;
+  padding-left: 2px !important;
+}
+
+/* ── Chat Message Bubbles ───────────────────────────── */
+
+/* User message — right aligned */
+.aura-msg-user-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin: 8px 0;
+  animation: slideInRight 0.28s ease-out;
+}
+
+.aura-msg-user-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 5px;
+  padding-right: 2px;
+}
+
+.aura-sender-you {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--aura-text-primary);
+}
+
+.aura-msg-time {
+  font-size: 11px;
+  color: var(--aura-text-hint);
+}
+
+.aura-bubble-user {
+  background: var(--aura-bubble-user);
+  border: 1px solid rgba(74,144,226,0.20);
+  border-radius: 18px 4px 18px 18px;
+  padding: 11px 16px;
+  max-width: 68%;
+  font-size: 14px;
+  color: var(--aura-text-primary);
+  line-height: 1.55;
+  word-wrap: break-word;
+}
+
+/* AI message — left aligned */
+.aura-msg-ai-wrap {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 8px 0;
+  animation: slideInLeft 0.28s ease-out;
+}
+
+.aura-ai-avatar {
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 38% 36%, #4A90E2, #7B6FF0 60%, #06071A);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  box-shadow: 0 0 14px rgba(123,111,240,0.65);
+  margin-top: 0;
+  flex-shrink: 0;
+}
+
+.aura-msg-ai-body { flex: 1; min-width: 0; }
+
+.aura-msg-ai-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 5px;
+  padding-left: 2px;
+}
+
+.aura-sender-ai {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--aura-accent-gold);
+}
+
+.aura-bubble-ai {
+  background: var(--aura-bubble-ai);
+  border: 1px solid var(--aura-border);
+  border-radius: 4px 18px 18px 18px;
+  padding: 11px 16px;
+  font-size: 14px;
+  color: var(--aura-text-primary);
+  line-height: 1.60;
+  word-wrap: break-word;
+  display: inline-block;
+  max-width: 100%;
+}
+
+.aura-bubble-ai p  { margin: 4px 0; }
+.aura-bubble-ai ul { margin: 6px 0; padding-left: 20px; }
+.aura-bubble-ai li { margin: 3px 0; }
+.aura-bubble-ai h1,.aura-bubble-ai h2,.aura-bubble-ai h3 {
+  color: var(--aura-text-primary); margin: 8px 0 4px;
+}
+.aura-bubble-ai code {
+  background: rgba(123,111,240,0.18);
+  border: 1px solid rgba(123,111,240,0.22);
+  border-radius: 4px;
+  padding: 1px 6px;
+  font-size: 12.5px;
+  color: var(--aura-accent-gold2);
+}
+.aura-bubble-ai pre {
+  background: rgba(0,0,0,0.3);
+  border: 1px solid var(--aura-border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  overflow-x: auto;
+  font-size: 12.5px;
+  margin: 8px 0;
+}
+
+/* Animations */
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(16px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-16px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Typing indicator */
+.aura-typing-wrap {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 8px 0;
+}
+
+.aura-typing-dots {
+  display: flex;
+  gap: 5px;
+  background: var(--aura-bubble-ai);
+  border: 1px solid var(--aura-border);
+  border-radius: 4px 18px 18px 18px;
+  padding: 14px 18px;
+}
+
+.aura-typing-dots span {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--aura-text-hint);
+  animation: typing-bounce 1.2s ease-in-out infinite;
+}
+.aura-typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+.aura-typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes typing-bounce {
+  0%,80%,100% { transform: translateY(0);    opacity: 0.4; }
+  40%          { transform: translateY(-6px); opacity: 1;   }
+}
+
+/* ── Chat Input Bar ─────────────────────────────────── */
+/* The gold-bordered input wrapper with sparkle icon */
+.aura-input-bar-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--aura-bg-card);
+  border: 1.5px solid var(--aura-border-gold);
+  border-radius: var(--radius-xl);
+  padding: 8px 8px 8px 14px;
+  margin-top: 1rem;
+  box-shadow: 0 0 24px var(--aura-glow-gold);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.aura-input-bar-wrap:focus-within {
+  box-shadow: 0 0 36px rgba(240,165,0,0.28);
+  border-color: rgba(240,165,0,0.60);
+}
+
+/* ── Streamlit bottom sticky bar (wraps st.chat_input) ── */
+[data-testid="stBottom"],
+[data-testid="stBottom"] > div,
+[data-testid="stBottom"] > div > div {
+  background: var(--aura-bg-deep) !important;
+  border-top: 1px solid var(--aura-border) !important;
+}
+
+/* Native Streamlit chat input — outer shell */
+[data-testid="stChatInput"] {
+  background: var(--aura-bg-card) !important;
+  border: 1.5px solid var(--aura-border-gold) !important;
+  border-radius: var(--radius-xl) !important;
+  box-shadow: 0 0 24px var(--aura-glow-gold) !important;
+  padding-left: 12px !important;
+}
+
+/* Every inner div/section Streamlit puts inside the chat input */
+[data-testid="stChatInput"] > div,
+[data-testid="stChatInput"] > div > div,
+[data-testid="stChatInput"] section,
+[data-testid="stChatInput"] [data-baseweb="base-input"],
+[data-testid="stChatInput"] [data-baseweb="textarea"],
+[data-testid="stChatInput"] [data-baseweb="input"],
+[data-testid="stChatInputContainer"],
+[data-testid="stChatInputContainer"] > div {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* The textarea itself */
+[data-testid="stChatInput"] textarea {
+  background: transparent !important;
+  background-color: transparent !important;
+  color: var(--aura-text-primary) !important;
+  font-family: var(--font-body) !important;
+  font-size: 14px !important;
+  caret-color: var(--aura-accent-gold) !important;
+}
+[data-testid="stChatInput"] textarea::placeholder {
+  color: var(--aura-text-hint) !important;
+}
+[data-testid="stChatInput"] textarea:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Focus-within glow on the outer shell */
+[data-testid="stChatInput"]:focus-within {
+  border-color: rgba(240,165,0,0.60) !important;
+  box-shadow: 0 0 36px rgba(240,165,0,0.28) !important;
+}
+
+/* Send button */
+[data-testid="stChatInput"] button {
+  background: var(--aura-accent-gold) !important;
+  border-radius: 50% !important;
+  color: #06071A !important;
+  width: 40px !important;
+  height: 40px !important;
+  min-width: 40px !important;
+  border: none !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 0 12px rgba(240,165,0,0.4) !important;
+}
+[data-testid="stChatInput"] button:hover {
+  background: var(--aura-accent-gold2) !important;
+  transform: scale(1.07) !important;
+}
+
+/* ── Buttons (main content) ─────────────────────────── */
+.stButton > button[kind="primary"] {
+  background: var(--aura-accent-gold) !important;
+  color: #06071A !important;
+  border: none !important;
+  font-family: var(--font-body) !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  border-radius: var(--radius-md) !important;
+  padding: 0.55rem 1.4rem !important;
+  transition: all 0.2s ease !important;
+}
+.stButton > button[kind="primary"]:hover {
+  background: var(--aura-accent-gold2) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 18px rgba(240,165,0,0.38) !important;
+}
+
+.stButton > button {
+  background: transparent !important;
+  color: var(--aura-text-muted) !important;
+  border: 1px solid var(--aura-border) !important;
+  font-family: var(--font-body) !important;
+  font-size: 14px !important;
+  border-radius: var(--radius-md) !important;
+  padding: 0.55rem 1.2rem !important;
+  transition: all 0.2s ease !important;
+}
+.stButton > button:hover {
+  border-color: rgba(240,165,0,0.4) !important;
+  color: var(--aura-text-primary) !important;
+  background: rgba(240,165,0,0.06) !important;
+}
+
+/* ── Cards ──────────────────────────────────────────── */
+.aura-card {
+  background: var(--aura-bg-card);
+  border: 1px solid var(--aura-border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.aura-card:hover {
+  border-color: var(--aura-border-gold);
+  box-shadow: 0 0 22px var(--aura-glow-gold);
+}
+.aura-card-gold {
+  background: var(--aura-bg-card);
+  border: 1px solid var(--aura-border-gold);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  box-shadow: 0 0 18px var(--aura-glow-gold);
+}
+
+/* ── Disclaimer ─────────────────────────────────────── */
+.aura-disclaimer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--aura-text-hint);
+  margin-top: 0.75rem;
+  letter-spacing: 0.02em;
+}
+
+/* ── Tabs (Resume Studio) ───────────────────────────── */
+.stTabs [data-baseweb="tab-list"] {
+  background: transparent !important;
+  border-bottom: 1px solid var(--aura-border) !important;
+  gap: 4px;
+}
+.stTabs [data-baseweb="tab"] {
+  background: transparent !important;
+  color: var(--aura-text-muted) !important;
+  font-family: var(--font-body) !important;
+  font-size: 13.5px !important;
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0 !important;
+  padding: 0.5rem 0.8rem !important;
+  border: none !important;
+}
+.stTabs [data-baseweb="tab"]:hover {
+  background: rgba(240,165,0,0.06) !important;
+  color: var(--aura-text-primary) !important;
+}
+.stTabs [aria-selected="true"] {
+  color: var(--aura-text-primary) !important;
+  border-bottom: 2px solid var(--aura-accent-gold) !important;
+}
+.stTabs [data-baseweb="tab-panel"] {
+  background: transparent !important;
+  padding-top: 1rem !important;
+}
+
+/* ── File Uploader — comprehensive dark theme ─────────── */
+[data-testid="stFileUploader"] {
+  background: transparent !important;
+}
+
+/* The actual dropzone box */
+[data-testid="stFileUploaderDropzone"] {
+  background: var(--aura-bg-card) !important;
+  border: 2px dashed var(--aura-border-gold) !important;
+  border-radius: var(--radius-md) !important;
+  transition: border-color 0.25s ease, background 0.25s ease !important;
+}
+[data-testid="stFileUploaderDropzone"]:hover {
+  border-color: var(--aura-accent-gold) !important;
+  background: rgba(240,165,0,0.04) !important;
+}
+
+/* All inner wrappers — kill any white from Streamlit's default */
+[data-testid="stFileUploaderDropzone"] > div,
+[data-testid="stFileUploaderDropzone"] section,
+[data-testid="stFileUploaderDropzone"] span {
+  background: transparent !important;
+}
+
+/* Instruction text */
+[data-testid="stFileUploaderDropzoneInstructions"] p,
+[data-testid="stFileUploaderDropzoneInstructions"] span,
+[data-testid="stFileUploaderDropzoneInstructions"] small {
+  color: var(--aura-text-muted) !important;
+  font-family: var(--font-body) !important;
+}
+
+/* "Browse files" button inside the uploader */
+[data-testid="stFileUploaderDropzone"] button {
+  background: rgba(240,165,0,0.10) !important;
+  color: var(--aura-accent-gold) !important;
+  border: 1px solid var(--aura-border-gold) !important;
+  border-radius: var(--radius-sm) !important;
+  font-family: var(--font-body) !important;
+  font-size: 13px !important;
+  padding: 0.35rem 0.9rem !important;
+  transition: all 0.2s ease !important;
+}
+[data-testid="stFileUploaderDropzone"] button:hover {
+  background: rgba(240,165,0,0.20) !important;
+  border-color: var(--aura-accent-gold) !important;
+}
+
+/* Uploaded file row (after a file is chosen) */
+[data-testid="stUploadedFile"],
+[data-testid="stFileUploaderFile"] {
+  background: var(--aura-bg-card) !important;
+  border: 1px solid var(--aura-border) !important;
+  border-radius: var(--radius-sm) !important;
+  color: var(--aura-text-primary) !important;
+}
+[data-testid="stUploadedFileData"] span,
+[data-testid="stUploadedFileData"] small {
+  color: var(--aura-text-muted) !important;
+  font-family: var(--font-body) !important;
+}
+/* Delete / X button on uploaded file */
+[data-testid="stUploadedFile"] button,
+[data-testid="stFileUploaderFile"] button {
+  background: transparent !important;
+  color: var(--aura-text-muted) !important;
+  border: none !important;
+}
+[data-testid="stUploadedFile"] button:hover,
+[data-testid="stFileUploaderFile"] button:hover {
+  color: #FF6B6B !important;
+  background: rgba(255,107,107,0.10) !important;
+}
+
+/* ── Text input / Textarea ───────────────────────────── */
+.stTextInput > div > div > input,
+.stTextArea > div > div > textarea {
+  background: var(--aura-bg-card) !important;
+  border: 1px solid var(--aura-border-gold) !important;
+  border-radius: var(--radius-md) !important;
+  color: var(--aura-text-primary) !important;
+  font-family: var(--font-body) !important;
+  font-size: 14px !important;
+  transition: all 0.3s ease !important;
+}
+.stTextInput > div > div > input:focus,
+.stTextArea > div > div > textarea:focus {
+  border-color: var(--aura-accent-gold) !important;
+  box-shadow: 0 0 20px rgba(240,165,0,0.22) !important;
+  outline: none !important;
+}
+.stTextInput > div > div > input::placeholder,
+.stTextArea > div > div > textarea::placeholder {
+  color: var(--aura-text-hint) !important;
+}
+
+/* ── Select ─────────────────────────────────────────── */
+.stSelectbox > div > div,
+.stMultiSelect > div > div {
+  background: var(--aura-bg-card) !important;
+  border: 1px solid var(--aura-border) !important;
+  border-radius: var(--radius-md) !important;
+  color: var(--aura-text-primary) !important;
+}
+
+/* ── Divider ─────────────────────────────────────────── */
+hr, [data-testid="stDivider"] {
+  border-color: var(--aura-border) !important;
+  margin: 1rem 0 !important;
+}
+
+/* ── Markdown ────────────────────────────────────────── */
+.stMarkdown p, .stMarkdown li {
+  color: var(--aura-text-primary) !important;
+  font-family: var(--font-body) !important;
+  font-size: 14px !important;
+  line-height: 1.65 !important;
+}
+.stMarkdown h1,.stMarkdown h2,.stMarkdown h3 {
+  color: var(--aura-text-primary) !important;
+  font-family: var(--font-body) !important;
+  font-weight: 500 !important;
+}
+.stMarkdown code {
+  background: rgba(123,111,240,0.16) !important;
+  border: 1px solid rgba(123,111,240,0.22) !important;
+  color: var(--aura-accent-gold2) !important;
+  border-radius: 4px !important;
+  padding: 1px 6px !important;
+  font-size: 13px !important;
+}
+
+/* ── Spinner ─────────────────────────────────────────── */
+[data-testid="stSpinner"] { color: var(--aura-accent-gold) !important; }
+
+/* ── Scrollbar ───────────────────────────────────────── */
+* { scrollbar-width: thin; scrollbar-color: var(--aura-text-hint) transparent; }
+*::-webkit-scrollbar { width: 5px; height: 5px; }
+*::-webkit-scrollbar-track { background: transparent; }
+*::-webkit-scrollbar-thumb { background: var(--aura-text-hint); border-radius: 4px; }
+
+/* ── Expander ────────────────────────────────────────── */
+[data-testid="stExpander"] {
+  background: var(--aura-bg-card) !important;
+  border: 1px solid var(--aura-border) !important;
+  border-radius: var(--radius-md) !important;
+}
+[data-testid="stExpander"] summary {
+  color: var(--aura-text-primary) !important;
+  font-family: var(--font-body) !important;
+}
+
+/* ── Success / Warning / Error ───────────────────────── */
+[data-testid="stAlert"] {
+  border-radius: var(--radius-md) !important;
+  font-family: var(--font-body) !important;
+}
+
+/* ── Star field (animated, appended via JS) ──────────── */
+@keyframes twinkle {
+  0%,100% { opacity: 0.2; }
+  50%      { opacity: 0.8; }
+}
+.star-dot {
+  position: fixed;
+  width: 2px; height: 2px;
+  border-radius: 50%;
+  background: white;
+  animation: twinkle linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
