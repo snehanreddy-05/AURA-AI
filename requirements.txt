@@ -1,15 +1,8 @@
-streamlit
-google-generativeai
-langchain
-langchain-community
-langchain-google-genai
-faiss-cpu
-pypdf
-python-dotenv
-sentence-transformers
-chromadb
-pandas
-numpy
-plotly
-matplotlib
-Pillow
+Package Role
+streamlit The entire web framework
+requests Calls the OpenRouter AI API
+pdfplumber Primary PDF text extractor
+PyPDF2 Fallback PDF reader
+pytesseract Python wrapper for Tesseract OCR
+pdf2image Converts PDF pages → images for OCR
+Pillow Image processing for the OCR pipeline
