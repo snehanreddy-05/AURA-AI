@@ -1,8 +1,7 @@
-Package Role
-streamlit The entire web framework
-requests Calls the OpenRouter AI API
-pdfplumber Primary PDF text extractor
-PyPDF2 Fallback PDF reader
-pytesseract Python wrapper for Tesseract OCR
-pdf2image Converts PDF pages → images for OCR
-Pillow Image processing for the OCR pipeline
+streamlit>=1.31.0
+requests>=2.31.0
+pdfplumber>=0.10.0
+PyPDF2>=3.0.0
+pytesseract>=0.3.10
+pdf2image>=1.16.3
+Pillow>=10.0.0
