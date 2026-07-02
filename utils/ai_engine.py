@@ -4,16 +4,21 @@ AURA AI — OpenRouter API engine
 Bug-fix: API key was stored as a list; corrected to string.
 """
 
-import requests
-from dotenv import load_dotenv
 import os
+import streamlit as st
 
-load_dotenv()
+# Load .env locally if dotenv is available
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass  # Not available on Streamlit Cloud — that's fine
 
-
-
-# ── Config ────────────────────────────────────────────────────────────────────
-OPENROUTER_API_KEY =os.getenv("OPENROUTER_API_KEY")
+# Reads from Streamlit Secrets on Cloud, from .env locally
+OPENROUTER_API_KEY = (
+    st.secrets.get("OPENROUTER_API_KEY", None)
+    or os.getenv("OPENROUTER_API_KEY", "")
+)
 OPENROUTER_URL     = "https://openrouter.ai/api/v1/chat/completions"
 MODEL              = "nvidia/nemotron-3-ultra-550b-a55b:free"
 
