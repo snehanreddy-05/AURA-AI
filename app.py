@@ -98,7 +98,7 @@ with q2:
 
 with q3:
     if st.button("📚 Open PDF Assistant", use_container_width=True, type="primary"):
-        st.switch_page("pages/3_📚_PDF_Assistant.py")
+        st.switch_page("pages/3_PDF_Assistant.py")
 
 st.markdown("---")
 
